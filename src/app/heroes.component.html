@@ -1,0 +1,63 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
+  
+</div>
+
+
+<!--<h1>{{title}}</h1>
+  <h2>{{hero.name}} details!</h2>
+  <div><label>id: </label>{{hero.id}}</div>
+  <div><label>name: </label>{{hero.name}}</div>
+  <div>
+  <label>name: </label>
+  <input [(ngModel)]="hero.name" placeholder="name">-->
+
+ <div>
+  <h2>My Heroes</h2>
+<ul class="heroes">
+  
+<li *ngFor="let hero of heroes" (click)="onSelect(hero)"
+    [class.selected]="hero === selectedHero">
+  <span class="badge">{{hero.id}}</span>
+  <span>{{hero.name}}</span>
+  <button class="delete"
+    (click)="delete(hero); $event.stopPropagation()">x</button>
+</li>
+</ul>
+</div>
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+
+
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
+
+<!--<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name}} details!</h2>
+  <div><label>id: </label>{{selectedHero.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+  </div>
+  <hero-detail [hero]="selectedHero"></hero-detail>
+</div>-->
+
+<div>
+  <label>Hero name:</label> <input #heroName />
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+
+  <button class="delete"
+  (click)="delete(hero); $event.stopPropagation()">x</button>
+</div>
+
+
+
+
